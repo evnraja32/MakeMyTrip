@@ -1,5 +1,12 @@
 package utils.browserinterface;
 
-public enum LocatorType {
-	id, name, className, linkText, partialLinkText, tagName, xpath, cssSelector
+public interface LocatorType {
+	String id="id";
+	String name="name";
+	String className="className";
+	String linkText="linkText";
+	String partialLinkText="partialLinkText";
+	String tagName="tagName";
+	String xpath="xpath";
+	String cssSelector="cssSelector";
 }

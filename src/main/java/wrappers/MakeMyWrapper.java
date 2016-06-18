@@ -13,7 +13,10 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -25,6 +28,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import utils.browserinterface.Browser;
 import utils.browserinterface.BrowserInspect;
+import utils.browserinterface.LocatorType;
 import utils.browserinterface.TargetBrowser;
 
 /**
@@ -38,6 +42,7 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 	protected Platform platform;
 	protected RemoteWebDriver driver;
 	protected String parentWindow;
+	protected WebElement element;
 	/**
 	 * 
 	 */
@@ -65,39 +70,39 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 	public boolean launchBrowser(TargetBrowser browserName) {
 		boolean launchStatus = false;
 		try{
-		DesiredCapabilities dc = new DesiredCapabilities();
-		dc.setPlatform(platform);
-		dc.setBrowserName(browser);
-		dc.setVersion(version);
+			DesiredCapabilities dc = new DesiredCapabilities();
+			dc.setPlatform(platform);
+			dc.setBrowserName(browser);
+			dc.setVersion(version);
 
-		if(browserName == TargetBrowser.FIREFOX){
-			driver = new FirefoxDriver();
-		}else if(browserName == TargetBrowser.CHROME){
-			System.setProperty("webdriver.chrome.driver", driverpath+"chromedriver.exe");
-			driver = new ChromeDriver();
-		}else if(browserName == TargetBrowser.INTERNETEXPLORER){
-			System.setProperty("webdriver.ie.driver", driverpath+"IEDriverServer.exe");
-			driver = new InternetExplorerDriver();
-		}else if(browserName == TargetBrowser.EDGE){
-			System.setProperty("webdriver.edge.driver", driverpath+"MicrosoftWebDriver.exe");
-			driver = new EdgeDriver();
-		}else if(browserName == TargetBrowser.REMOTE){
-			try {
-				driver = new RemoteWebDriver(new URL(remoteHUB),dc);
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
+			if(browserName == TargetBrowser.FIREFOX){
+				driver = new FirefoxDriver();
+			}else if(browserName == TargetBrowser.CHROME){
+				System.setProperty("webdriver.chrome.driver", driverpath+"chromedriver.exe");
+				driver = new ChromeDriver();
+			}else if(browserName == TargetBrowser.INTERNETEXPLORER){
+				System.setProperty("webdriver.ie.driver", driverpath+"IEDriverServer.exe");
+				driver = new InternetExplorerDriver();
+			}else if(browserName == TargetBrowser.EDGE){
+				System.setProperty("webdriver.edge.driver", driverpath+"MicrosoftWebDriver.exe");
+				driver = new EdgeDriver();
+			}else if(browserName == TargetBrowser.REMOTE){
+				try {
+					driver = new RemoteWebDriver(new URL(remoteHUB),dc);
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				}
 			}
-		}
 
-		driver.manage().window().maximize();
-		driver.get(siteURL);
-		browserWait(30); 
+			driver.manage().window().maximize();
+			driver.get(siteURL);
+			browserWait(30); 
 
-		
-		parentWindow = driver.getWindowHandle();
 
-		launchStatus = true;
-		
+			parentWindow = driver.getWindowHandle();
+
+			launchStatus = true;
+
 		}catch(WebDriverException e){
 			e.printStackTrace();
 		}
@@ -120,15 +125,49 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 		driver.quit();
 	}
 
-	@Override
-	public WebElement locateWebElementBy(String locatorType, String locatorValue) {
-		// TODO Auto-generated method stub
+	public By by(String locatorType, String locatorValue) {
+		if(locatorType.equals(LocatorType.id)){
+			return By.id(locatorValue);
+		}else if(locatorType.equals(LocatorType.name)){
+			return By.name(locatorValue);
+		}else if(locatorType.equals(LocatorType.className)){
+			return By.className(locatorValue);
+		}else if(locatorType.equals(LocatorType.cssSelector)){
+			return By.cssSelector(locatorValue);
+		}else if(locatorType.equals(LocatorType.linkText)){
+			return By.linkText(locatorValue);
+		}else if(locatorType.equals(LocatorType.partialLinkText)){
+			return By.partialLinkText(locatorValue);
+		}else if(locatorType.equals(LocatorType.tagName)){
+			return By.tagName(locatorValue);
+		}else if(locatorType.equals(LocatorType.xpath)){
+			return By.xpath(locatorValue);
+		}
+
 		return null;
 	}
 
 	@Override
+	public WebElement locateWebElementBy(String locatorType, String locatorValue) {
+		try{
+			element = driver.findElement(by(locatorType,locatorValue)); 
+		}catch(NoSuchElementException nse){
+			nse.printStackTrace();
+		}catch(StaleElementReferenceException sere){
+			sere.printStackTrace();
+		}
+		return element;
+	}
+
+	@Override
 	public List<WebElement> locateWebElementsListBy(String locatorType, String locatorValue) {
-		// TODO Auto-generated method stub
+		try{
+			return driver.findElements(by(locatorType,locatorValue)); 
+		}catch(NoSuchElementException nse){
+			nse.printStackTrace();
+		}catch(StaleElementReferenceException sere){
+			sere.printStackTrace();
+		}
 		return null;
 	}
 
