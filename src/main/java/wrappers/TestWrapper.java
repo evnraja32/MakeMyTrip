@@ -1,6 +1,7 @@
 package wrappers;
 
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -12,7 +13,7 @@ public class TestWrapper extends WrapperGuide {
 
 	@BeforeSuite
 	public void beforeSuite() {
-		loadObjects("google");
+		loadObjects("");
 	}
 
 	@BeforeTest
@@ -23,6 +24,7 @@ public class TestWrapper extends WrapperGuide {
 	@BeforeMethod
 	public void beforeMethod() {
 		platform = Platform.WINDOWS;
+		browser = BrowserType.CHROME;
 	}
 
 	@AfterSuite
