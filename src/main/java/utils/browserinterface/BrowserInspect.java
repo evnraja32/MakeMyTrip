@@ -1,4 +1,4 @@
-package wrappers;
+package utils.browserinterface;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public interface BrowserInspect {
 	abstract List<WebElement> locateWebElementsListBy(String locatorType, String locatorValue);
 
 	
-
+	abstract boolean verifyPageTitle(String pageTitle);
 
 
 }

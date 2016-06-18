@@ -9,12 +9,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Platform;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -22,13 +23,17 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import utils.browserinterface.Browser;
+import utils.browserinterface.BrowserInspect;
+import utils.browserinterface.TargetBrowser;
+
 /**
  * @author RAJA
  *
  */
-public class WrapperGuide implements Browser{
+public class WrapperGuide implements Browser, BrowserInspect{
 	protected static Properties prop;
-	protected String siteURL, remoteHUB;
+	protected String siteURL, remoteHUB,driverpath;
 	protected String browser,version;
 	protected Platform platform;
 	protected RemoteWebDriver driver;
@@ -40,6 +45,7 @@ public class WrapperGuide implements Browser{
 		loadObjects("config");
 		remoteHUB = prop.getProperty("HUB");
 		siteURL = prop.getProperty("URL");
+		driverpath=prop.getProperty("driverpath");
 	}
 
 	@Override
@@ -67,13 +73,13 @@ public class WrapperGuide implements Browser{
 		if(browserName == TargetBrowser.FIREFOX){
 			driver = new FirefoxDriver();
 		}else if(browserName == TargetBrowser.CHROME){
-			System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", driverpath+"chromedriver.exe");
 			driver = new ChromeDriver();
 		}else if(browserName == TargetBrowser.INTERNETEXPLORER){
-			System.setProperty("webdriver.ie.driver", "./drivers/IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver", driverpath+"IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 		}else if(browserName == TargetBrowser.EDGE){
-			System.setProperty("webdriver.edge.driver", "./drivers/MicrosoftWebDriver.exe");
+			System.setProperty("webdriver.edge.driver", driverpath+"MicrosoftWebDriver.exe");
 			driver = new EdgeDriver();
 		}else if(browserName == TargetBrowser.REMOTE){
 			try {
@@ -112,6 +118,26 @@ public class WrapperGuide implements Browser{
 	@Override
 	public void quitTheBrowser() {
 		driver.quit();
+	}
+
+	@Override
+	public WebElement locateWebElementBy(String locatorType, String locatorValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<WebElement> locateWebElementsListBy(String locatorType, String locatorValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean verifyPageTitle(String pageTitle) {
+		if(driver.getTitle().equals(pageTitle)){
+			return true;
+		}
+		return false;
 	}
 
 
