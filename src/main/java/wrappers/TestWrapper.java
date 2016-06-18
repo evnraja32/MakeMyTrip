@@ -9,22 +9,26 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 
+import utils.browserinterface.TargetBrowser;
+
 public class TestWrapper extends MakeMyWrapper {
 
 	@BeforeSuite
 	public void beforeSuite() {
-		loadObjects("");
+		System.out.println("Initiate Test Reporter");
+		loadObjects("object");
 	}
 
 	@BeforeTest
 	public void beforeTest() {
-		System.out.println("Before Test");
+		System.out.println("Before Test Start Test Case in reporter");
 	}
 
 	@BeforeMethod
 	public void beforeMethod() {
 		platform = Platform.WINDOWS;
 		browser = BrowserType.CHROME;
+		launchBrowser(TargetBrowser.CHROME);
 	}
 
 	@AfterSuite

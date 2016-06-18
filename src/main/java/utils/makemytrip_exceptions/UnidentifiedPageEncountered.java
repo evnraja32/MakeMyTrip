@@ -7,6 +7,7 @@ public class UnidentifiedPageEncountered extends Exception{
 		/*This class will be called when any navigation happened to unexpected page
 		 * 
 		 */
+		System.err.println("This is not your intended page");
 	}
 
 }

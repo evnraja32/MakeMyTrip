@@ -58,7 +58,7 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 		// TODO Auto-generated method stub
 		prop = new Properties();
 		try {
-			prop.load(new FileInputStream(new File("./src/test/java/properties/"+objectFileName+".properties")));
+			prop.load(new FileInputStream(new File("./src/main/java/properties/"+objectFileName+".properties")));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -78,6 +78,7 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 			if(browserName == TargetBrowser.FIREFOX){
 				driver = new FirefoxDriver();
 			}else if(browserName == TargetBrowser.CHROME){
+				System.out.println(driverpath+"chromedriver.exe");
 				System.setProperty("webdriver.chrome.driver", driverpath+"chromedriver.exe");
 				driver = new ChromeDriver();
 			}else if(browserName == TargetBrowser.INTERNETEXPLORER){

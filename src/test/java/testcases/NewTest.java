@@ -2,9 +2,13 @@ package testcases;
 
 import org.testng.annotations.Test;
 
-public class NewTest {
+import pages.HomePage;
+import wrappers.TestWrapper;
+
+public class NewTest extends TestWrapper{
   @Test
   public void f() {
-	  System.out.println("new Completed");
+	  new HomePage()
+	  .switchToTravelTab();
   }
 }
