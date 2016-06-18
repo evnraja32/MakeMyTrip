@@ -36,11 +36,11 @@ import utils.browserinterface.TargetBrowser;
  *
  */
 public class MakeMyWrapper implements Browser, BrowserInspect{
-	protected static Properties prop;
+	protected static Properties prop = new Properties();;
 	protected String siteURL, remoteHUB,driverpath;
 	protected String browser,version;
 	protected Platform platform;
-	protected RemoteWebDriver driver;
+	protected static RemoteWebDriver driver;
 	protected String parentWindow;
 	protected WebElement element;
 	/**
@@ -56,7 +56,7 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 	@Override
 	public void loadObjects(String objectFileName) {
 		// TODO Auto-generated method stub
-		prop = new Properties();
+		
 		try {
 			prop.load(new FileInputStream(new File("./src/main/java/properties/"+objectFileName+".properties")));
 		} catch (FileNotFoundException e) {
@@ -68,7 +68,6 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 
 	@Override
 	public boolean launchBrowser(TargetBrowser browserName) {
-		boolean launchStatus = false;
 		try{
 			DesiredCapabilities dc = new DesiredCapabilities();
 			dc.setPlatform(platform);
@@ -96,19 +95,20 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 			}
 
 			driver.manage().window().maximize();
-			driver.get(siteURL);
 			browserWait(30); 
-
-
+			driver.get(siteURL);
 			parentWindow = driver.getWindowHandle();
-
-			launchStatus = true;
+//			driver.getTitle();
+			return true;
 
 		}catch(WebDriverException e){
 			e.printStackTrace();
-		}
+		} 
+//		catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 
-		return launchStatus;
+		return false;
 	}
 
 	@Override
@@ -127,7 +127,9 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 	}
 
 	public By by(String locatorType, String locatorValue) {
-		if(locatorType.equals(LocatorType.id)){
+		System.out.println(locatorType+" \n"+LocatorType.id);
+		
+		if(locatorType.equals("id")){
 			return By.id(locatorValue);
 		}else if(locatorType.equals(LocatorType.name)){
 			return By.name(locatorValue);
@@ -174,7 +176,8 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 
 	@Override
 	public boolean verifyPageTitle(String pageTitle) {
-		if(driver.getTitle().equals(pageTitle)){
+		String title = driver.getTitle();
+		if(title.equals(pageTitle)){
 			return true;
 		}
 		return false;

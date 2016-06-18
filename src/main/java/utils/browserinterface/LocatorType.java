@@ -1,12 +1,12 @@
 package utils.browserinterface;
 
 public interface LocatorType {
-	String id="id";
-	String name="name";
-	String className="className";
-	String linkText="linkText";
-	String partialLinkText="partialLinkText";
-	String tagName="tagName";
-	String xpath="xpath";
-	String cssSelector="cssSelector";
+	final static String id="id";
+	final static String name="name";
+	final static String className="className";
+	final static String linkText="linkText";
+	final static String partialLinkText="partialLinkText";
+	final static String tagName="tagName";
+	final static String  xpath="xpath";
+	final static String cssSelector="cssSelector";
 }

@@ -16,7 +16,6 @@ public class TestWrapper extends MakeMyWrapper {
 	@BeforeSuite
 	public void beforeSuite() {
 		System.out.println("Initiate Test Reporter");
-		loadObjects("object");
 	}
 
 	@BeforeTest
@@ -28,6 +27,7 @@ public class TestWrapper extends MakeMyWrapper {
 	public void beforeMethod() {
 		platform = Platform.WINDOWS;
 		browser = BrowserType.CHROME;
+		loadObjects("object");
 		launchBrowser(TargetBrowser.CHROME);
 	}
 

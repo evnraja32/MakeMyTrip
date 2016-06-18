@@ -9,7 +9,8 @@ public class TravelTab extends MakeMyWrapper{
 
 	public TravelTab() {
 		WebElement tab = 
-		locateWebElementBy(prop.getProperty("TravelTabs.TabMenu.locatorType"), prop.getProperty("TravelTabs.TabMenu.locatorValue"));
+		locateWebElementBy(prop.getProperty("TravelTab.TabMenu.locatorType"),
+				prop.getProperty("TravelTab.TabMenu.locatorValue"));
 		if(!tab.isDisplayed()){
 			try {
 				throw new DesiredMenuOptionsNotAvailable();
