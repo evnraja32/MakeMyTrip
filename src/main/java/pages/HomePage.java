@@ -1,9 +1,9 @@
 package pages;
 
 import utils.makemytrip_exceptions.UnidentifiedPageEncountered;
-import wrappers.WrapperGuide;
+import wrappers.MakeMyWrapper;
 
-public class HomePage extends WrapperGuide{
+public class HomePage extends MakeMyWrapper{
 
 	public HomePage() {
 		/*To confirm that we have successfully landed into home we 

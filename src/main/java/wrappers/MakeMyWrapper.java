@@ -31,7 +31,7 @@ import utils.browserinterface.TargetBrowser;
  * @author RAJA
  *
  */
-public class WrapperGuide implements Browser, BrowserInspect{
+public class MakeMyWrapper implements Browser, BrowserInspect{
 	protected static Properties prop;
 	protected String siteURL, remoteHUB,driverpath;
 	protected String browser,version;
@@ -41,7 +41,7 @@ public class WrapperGuide implements Browser, BrowserInspect{
 	/**
 	 * 
 	 */
-	public WrapperGuide() {
+	public MakeMyWrapper() {
 		loadObjects("config");
 		remoteHUB = prop.getProperty("HUB");
 		siteURL = prop.getProperty("URL");

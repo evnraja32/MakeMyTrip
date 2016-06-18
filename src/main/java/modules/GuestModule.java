@@ -1,8 +1,8 @@
 package modules;
 
-public class New {
+public class GuestModule {
 
-	public New() {
+	public GuestModule() {
 		// TODO Auto-generated constructor stub
 	}
 

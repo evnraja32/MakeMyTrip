@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 
-public class TestWrapper extends WrapperGuide {
+public class TestWrapper extends MakeMyWrapper {
 
 	@BeforeSuite
 	public void beforeSuite() {
