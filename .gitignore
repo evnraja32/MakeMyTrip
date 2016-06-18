@@ -2,3 +2,4 @@
 /target/
 .settings
 resources
+/test-output/
