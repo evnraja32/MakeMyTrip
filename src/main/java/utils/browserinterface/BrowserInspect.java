@@ -21,4 +21,5 @@ public interface BrowserInspect {
 	abstract boolean verifyPageTitle(String pageTitle);
 
 
+
 }
