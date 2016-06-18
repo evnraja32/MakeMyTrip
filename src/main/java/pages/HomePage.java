@@ -13,7 +13,7 @@ public class HomePage extends WrapperGuide{
 			try {
 				throw new UnidentifiedPageEncountered();
 			} catch (UnidentifiedPageEncountered e) {
-				e.printStackTrace();
+				e.printStackTrace();//khbjk
 			}
 		}
 	}
