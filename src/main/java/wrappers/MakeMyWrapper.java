@@ -20,7 +20,6 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -82,15 +81,15 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 		        // To remove message "You are using an unsupported command-line flag: --ignore-certificate-errors.
 		        // Stability and security will suffer."
 		        // Add an argument 'test-type'
-		        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-		        ChromeOptions options = new ChromeOptions();
-		        options.addArguments("test-type");
-		        capabilities.setCapability("chrome.binary",  driverpath+"chromedriver.exe");
-		        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-
-		        driver = new ChromeDriver(capabilities);
+//		        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+//		        ChromeOptions options = new ChromeOptions();
+//		        options.addArguments("test-type");
+//		        capabilities.setCapability("chrome.binary",  driverpath+"chromedriver.exe");
+//		        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+//
+//		        driver = new ChromeDriver(capabilities);
 				
-//				driver = new ChromeDriver(dc);
+				driver = new ChromeDriver();
 			}else if(browserName == TargetBrowser.INTERNETEXPLORER){
 				System.setProperty("webdriver.ie.driver", driverpath+"IEDriverServer.exe");
 				driver = new InternetExplorerDriver();

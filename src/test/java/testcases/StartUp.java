@@ -1,6 +1,5 @@
 package testcases;
 
-import org.openqa.selenium.Platform;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
