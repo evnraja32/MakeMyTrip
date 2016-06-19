@@ -60,7 +60,7 @@
 				<version>2.19.1</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>testng.xml</suiteXmlFile>
+						<suiteXmlFile>./src/test/java/testsuites/smokesuite.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
@@ -69,6 +69,9 @@
 				<inherited>true</inherited>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<executable>C:\Program Files (x86)\Java\jdk1.8.0\bin\javac.exe</executable>
+				</configuration>
 			</plugin>
 
 

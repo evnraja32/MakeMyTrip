@@ -4,3 +4,4 @@
 resources
 /test-output/
 /debug.log
+/testng.xml
