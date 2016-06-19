@@ -1,5 +1,6 @@
 package testcases;
 
+import org.openqa.selenium.Platform;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -12,6 +13,7 @@ public class StartUp extends TestWrapper{
 	public void setCapabilities(){
 //		platform = Platform.WINDOWS;
 //		browser = BrowserType.CHROME;
+//		version = "51";
 		browserName = TargetBrowser.CHROME;
 	}
 
