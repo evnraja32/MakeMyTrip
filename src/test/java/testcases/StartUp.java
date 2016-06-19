@@ -12,7 +12,7 @@ import wrappers.TestWrapper;
 public class StartUp extends TestWrapper{
 	@BeforeClass
 	public void setCapabilities(){
-		platform = Platform.WINDOWS;
+//		platform = Platform.WINDOWS;
 		browser = BrowserType.CHROME;
 		browserName = TargetBrowser.CHROME;
 	}
