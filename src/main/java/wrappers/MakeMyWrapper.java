@@ -98,7 +98,7 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 			browserWait(30); 
 			driver.get(siteURL);
 			parentWindow = driver.getWindowHandle();
-//			driver.getTitle();
+			System.out.println(driver.getTitle());
 			return true;
 
 		}catch(WebDriverException e){
