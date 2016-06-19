@@ -12,28 +12,28 @@ import org.testng.annotations.DataProvider;
 import utils.browserinterface.TargetBrowser;
 
 public class TestWrapper extends MakeMyWrapper {
-
+	protected static TargetBrowser browserName;
+	
 	@BeforeSuite
 	public void beforeSuite() {
 		System.out.println("Initiate Test Reporter");
+		loadObjects("object");
 	}
 
 	@BeforeTest
 	public void beforeTest() {
-		System.out.println("Before Test Start Test Case in reporter");
+		System.out.println("Before Test Do nothing");
 	}
 
 	@BeforeMethod
 	public void beforeMethod() {
-		platform = Platform.WINDOWS;
-		browser = BrowserType.CHROME;
-		loadObjects("object");
-		launchBrowser(TargetBrowser.CHROME);
+		System.out.println("Start Test Case in the reporter");
+		launchBrowser(browserName);
 	}
 
 	@AfterSuite
 	public void afterSuite() {
-		System.out.println("after suite");
+		System.out.println("after suite end the reporter");
 	}
 
 
