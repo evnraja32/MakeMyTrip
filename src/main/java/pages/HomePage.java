@@ -9,18 +9,23 @@ public class HomePage extends MakeMyWrapper{
 		/*To confirm that we have successfully landed into home we 
 		 * verify the title of the page 
 		 */
-		if(!verifyPageTitle("MakeMyTrip, India's No 1 Travel Site | Book Hotels, Flights, Holiday Packages & Bus Tickets") 
-				
-				||!verifyPageTitle("MakeMyTrip, India's No 1 Travel Site | Book Flights, Hotels, Holiday Packages & Bus Tickets")
+		if(!verifyPageTitle("MakeMyTrip, India's No 1 Travel Site | Book Hotels, Flights, Holiday Packages & Bus Tickets")){
+			try {
+				throw new UnidentifiedPageEncountered();
+			} catch (UnidentifiedPageEncountered e) {
+				e.printStackTrace();
+			}
+		}else if (!verifyPageTitle("MakeMyTrip, India's No 1 Travel Site | Book Flights, Hotels, Holiday Packages & Bus Tickets")
 				){
 			try {
 				throw new UnidentifiedPageEncountered();
 			} catch (UnidentifiedPageEncountered e) {
 				e.printStackTrace();
 			}
+
 		}
 	}
-	
+
 	public TravelTab switchToTravelTab(){
 		return new TravelTab();
 	}
