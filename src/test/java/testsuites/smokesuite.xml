@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="smokesuite">
-  <test name="StartUpTest">
-    <classes>
-      <class name="testcases.StartUp"/>
-    </classes>
-  </test>
-  
-  
-  
-  
-  
-  
+<suite name="smokesuite" parallel="tests">
+	<test name="InitialBrowserTest">
+		<classes>
+			<class name="testcases.StartUp" />
+			<class name="testcases.IETest" />
+			<class name="testcases.FirefoxTest" />
+			<class name="testcases.EDGETest" />
+			<class name="testcases.ChromeTest" />
+		</classes>
+	</test>
+	<test name="RemoteServerTest">
+		<classes>
+			<class name="testcases.RemoteIETest" />
+			<class name="testcases.RemoteFirefoxTest" />
+			<class name="testcases.RemoteEDGETest" />
+			<class name="testcases.RemoteChromeTest" />
+		</classes>
+	</test>
+
 
 </suite> <!-- Suite -->
