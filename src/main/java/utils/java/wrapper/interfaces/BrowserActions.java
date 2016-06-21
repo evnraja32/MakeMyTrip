@@ -19,7 +19,7 @@ public interface BrowserActions {
 	 * @param String keysToSend
 	 * @return boolean value
 	 */
-	boolean sendKeysToElement(String keyToSend);
+	boolean sendKeysToElement(String keysToSend);
 	
 	/**
 	 * @author E V N Raja
