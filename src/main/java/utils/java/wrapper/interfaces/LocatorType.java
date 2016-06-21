@@ -1,4 +1,4 @@
-package utils.browserinterface;
+package utils.java.wrapper.interfaces;
 
 public interface LocatorType {
 	final static String id="id";

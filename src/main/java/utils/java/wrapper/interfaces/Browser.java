@@ -1,4 +1,4 @@
-package utils.browserinterface;
+package utils.java.wrapper.interfaces;
 
 public interface Browser {
 	/** @author E V N Raja

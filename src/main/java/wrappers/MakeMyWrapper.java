@@ -26,10 +26,10 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import utils.browserinterface.Browser;
-import utils.browserinterface.BrowserInspect;
-import utils.browserinterface.LocatorType;
-import utils.browserinterface.TargetBrowser;
+import utils.java.wrapper.interfaces.Browser;
+import utils.java.wrapper.interfaces.BrowserInspect;
+import utils.java.wrapper.interfaces.LocatorType;
+import utils.java.wrapper.interfaces.TargetBrowser;
 
 /**
  * @author RAJA

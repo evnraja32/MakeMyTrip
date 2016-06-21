@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pages.HomePage;
-import utils.browserinterface.TargetBrowser;
+import utils.java.wrapper.interfaces.TargetBrowser;
 import wrappers.TestWrapper;
 
 public class FirefoxTest extends TestWrapper{

@@ -1,4 +1,4 @@
-package utils.browserinterface;
+package utils.java.wrapper.interfaces;
 
 import java.util.List;
 
