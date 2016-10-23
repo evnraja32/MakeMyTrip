@@ -53,7 +53,6 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 		driverpath=prop.getProperty("driverpath");
 	}
 
-	@Override
 	public void loadObjects(String objectFileName) {
 		// TODO Auto-generated method stub
 		
@@ -66,7 +65,6 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 		}
 	}
 
-	@Override
 	public boolean launchBrowser(TargetBrowser browserName) {
 		try{
 			DesiredCapabilities dc = new DesiredCapabilities();
@@ -121,17 +119,15 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 		return false;
 	}
 
-	@Override
 	public void browserWait(int timeInSec) {
 		driver.manage().timeouts().implicitlyWait(timeInSec, TimeUnit.SECONDS);
 	}
 
-	@Override
 	public void closeTheWindow() {
 		driver.close();
 	}
 
-	@Override
+	
 	public void quitTheBrowser() {
 		driver.quit();
 	}
@@ -160,7 +156,7 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 		return null;
 	}
 
-	@Override
+
 	public WebElement locateWebElementBy(String locatorType, String locatorValue) {
 		try{
 			element = driver.findElement(by(locatorType,locatorValue)); 
@@ -172,7 +168,7 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 		return element;
 	}
 
-	@Override
+	
 	public List<WebElement> locateWebElementsListBy(String locatorType, String locatorValue) {
 		try{
 			return driver.findElements(by(locatorType,locatorValue)); 
@@ -184,7 +180,7 @@ public class MakeMyWrapper implements Browser, BrowserInspect{
 		return null;
 	}
 
-	@Override
+	
 	public boolean verifyPageTitle(String pageTitle) {
 		String title = driver.getTitle();
 		if(title.equals(pageTitle)){
