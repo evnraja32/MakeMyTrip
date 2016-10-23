@@ -19,9 +19,6 @@ public class TestWrapper extends MakeMyWrapper {
 	}
 
 	@BeforeTest
-	
-	
-	
 	public void beforeTest() {
 		System.out.println("Before Test Do nothing");
 	}
