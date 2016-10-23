@@ -25,7 +25,7 @@ public class TestWrapper extends MakeMyWrapper {
 
 	@BeforeMethod
 	public void beforeMethod() {
-		System.out.println("Start Test Case in the reporter");
+		System.out.println("Start Test Case in the reporter.");
 		launchBrowser(browserName);
 	}
 
